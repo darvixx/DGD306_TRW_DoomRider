@@ -447,7 +447,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Boss Walk-Attack-die_0: 7168154518615788300
+      Boss Walk-Attack-die_1: -8928944181095042560
+      Boss Walk-Attack-die_10: 5312449939356693062
+      Boss Walk-Attack-die_11: -1485728965876357041
+      Boss Walk-Attack-die_12: 3640793664355008018
+      Boss Walk-Attack-die_2: -8302752578921172037
+      Boss Walk-Attack-die_3: -5552958334600340016
+      Boss Walk-Attack-die_4: 551892956350462443
+      Boss Walk-Attack-die_5: -5215935348061285778
+      Boss Walk-Attack-die_6: 8283290948316818960
+      Boss Walk-Attack-die_7: 6609926825699134298
+      Boss Walk-Attack-die_8: -7711789888011424295
+      Boss Walk-Attack-die_9: 120055651579307372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
