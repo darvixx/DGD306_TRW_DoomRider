@@ -347,7 +347,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ghoul_Walk anim & die anim_0: -8992547156945683573
+      Ghoul_Walk anim & die anim_1: -4192439215063765086
+      Ghoul_Walk anim & die anim_2: -2505258173716174839
+      Ghoul_Walk anim & die anim_3: -1124183604726996888
+      Ghoul_Walk anim & die anim_4: -7798836253544646494
+      Ghoul_Walk anim & die anim_5: -6306099339857854076
+      Ghoul_Walk anim & die anim_6: 1113955919470040252
+      Ghoul_Walk anim & die anim_7: 447139218315052237
+      Ghoul_Walk anim & die anim_8: -1611409464505890177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
