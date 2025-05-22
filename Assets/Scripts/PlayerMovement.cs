@@ -1,72 +1,49 @@
+
 using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class CharacterMovement : MonoBehaviour
+ 
+public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 12f;
-    private Rigidbody2D rb;
-    private bool isGrounded;
+    [SerializeField] private float speed;
+    private Rigidbody2D body;
+    private Animator anim;
+    private bool grounded;
 
-    // Ground check variables
-    public Transform groundCheck;  // Assign in inspector
-    public float groundCheckRadius = 0.2f;
-    public LayerMask groundLayer;
-
-    void Start()
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        if (groundCheck == null)
-        {
-            Debug.LogWarning("groundCheck is not assigned in the inspector.");
-        }
+        //Grabs references for rigidbody and animator from game object.
+        body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
-        // Movement input using new Input System
-        float moveInput = 0f;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.dKey.isPressed)
-            {
-                moveInput = 1f;
-            }
-            else if (Keyboard.current.aKey.isPressed)
-            {
-                moveInput = -1f;
-            }
-        }
+        //Flip player when facing left/right.
+        if (horizontalInput > 0.01f)
+            transform.localScale = Vector3.one;
+        else if (horizontalInput < -0.01f)
+            transform.localScale = new Vector3(-1, 1, 1);
 
-        Vector2 linearVelocity = rb.linearVelocity;
-        linearVelocity.x = moveInput * moveSpeed;
-        rb.linearVelocity = linearVelocity;
+        if (Input.GetKey(KeyCode.Space) && grounded)
+            Jump();
 
-        // Check if grounded only if groundCheck is assigned
-        if (groundCheck != null)
-        {
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        }
-        else
-        {
-            isGrounded = false;
-        }
-
-        // Jump input
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
+        //sets animation parameters
+        anim.SetBool("run", horizontalInput != 0);
+        anim.SetBool("grounded", grounded);
     }
 
-    private void OnDrawGizmosSelected()
+    private void Jump()
     {
-        // Visualize groundCheck area if assigned
-        if (groundCheck != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-        }
+        body.velocity = new Vector2(body.velocity.x, speed);
+        anim.SetTrigger("jump");
+        grounded = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+            grounded = true;
     }
 }
