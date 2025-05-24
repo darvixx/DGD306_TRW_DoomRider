@@ -567,16 +567,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1731546688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb02dbba0a47a8d4d858b4a171d5a9c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 708a923d1911e5947b7b61cf84b5a69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 10
-  groundCheck: {fileID: 1441764121}
-  groundCheckRadius: 0.2
+  jumpForce: 8
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  groundCheck: {fileID: 1441764121}
+  groundCheckRadius: 0.2
 --- !u!1 &1926585151
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 1926585154}
   - component: {fileID: 1926585153}
   - component: {fileID: 1926585152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Back ground_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
