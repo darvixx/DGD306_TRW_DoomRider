@@ -19,14 +19,16 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;  
             Die();
         }
     }
 
     void Die()
     {
-        Debug.Log("You have died!");
-        
+        Debug.Log("You died.GAME OVER!");
+
+
     }
 
     void Update()

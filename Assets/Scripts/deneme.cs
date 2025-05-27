@@ -9,6 +9,8 @@ public class deneme : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
+    public GameObject voidballPrefab;
+    public Transform FirePoint;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -50,7 +52,17 @@ public class deneme : MonoBehaviour
             
         }
 
-      
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GameObject voidball = Instantiate(voidballPrefab,FirePoint.position, Quaternion.identity);
+
+            
+            Vector3 scale = voidball.transform.localScale;
+            scale.x = transform.localScale.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+            voidball.transform.localScale = scale;
+        }
+
+
 
     }
 
@@ -63,7 +75,7 @@ public class deneme : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    // Optional: visualize ground check in editor
+    
     private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
