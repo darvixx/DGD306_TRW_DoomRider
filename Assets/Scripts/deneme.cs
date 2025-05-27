@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class deneme : MonoBehaviour
+   
 {
     public float moveSpeed = 5f;
     public float jumpForce = 12f;
@@ -20,7 +21,7 @@ public class deneme : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-
+    
     private void Update()
     {
         // Input
@@ -43,7 +44,13 @@ public class deneme : MonoBehaviour
 
         anim.SetBool("isJumping", !isGrounded);
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            anim.SetTrigger("attack");
+            
+        }
 
+      
 
     }
 
@@ -62,4 +69,6 @@ public class deneme : MonoBehaviour
         if (groundCheck != null)
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
+
+    
 }
