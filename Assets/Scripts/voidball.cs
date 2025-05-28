@@ -6,16 +6,31 @@ public class voidball : MonoBehaviour
 
     void Start()
     {
-        // Y�n: scale'dan belirleniyor
+        
         float direction = transform.localScale.x > 0 ? 1f : -1f;
 
-        // Rigidbody2D componentini al
+        
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-        // �leri do�ru velocity ver
+        
         rb.linearVelocity = new Vector2(speed * direction, 0f);
 
-        // Yok et
+        
         Destroy(gameObject, 1f);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            EnemyHealth enemy = other.GetComponent<EnemyHealth>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(1); 
+            }
+
+            Destroy(gameObject); 
+        }
+    }
+
 }
