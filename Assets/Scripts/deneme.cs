@@ -27,7 +27,13 @@ public class deneme : MonoBehaviour
     private void Update()
     {
         // Input
-        moveInput = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right
+        if (Input.GetKey(KeyCode.A))
+            moveInput = -1f;
+        else if (Input.GetKey(KeyCode.D))
+            moveInput = 1f;
+        else
+            moveInput = 0f;
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
