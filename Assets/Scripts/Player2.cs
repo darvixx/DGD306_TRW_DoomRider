@@ -44,6 +44,8 @@ public class Player2Movement : MonoBehaviour
 
 
         animator.SetFloat("speed", Mathf.Abs(moveInput));
+        animator.SetBool("isJumping", !isGrounded);
+
 
     }
 
