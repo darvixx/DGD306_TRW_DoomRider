@@ -9,10 +9,17 @@ public class Player2Movement : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
+    
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private float moveInput;
     private Animator animator;
+
+    
+
+
+
 
     void Start()
     {
@@ -47,6 +54,17 @@ public class Player2Movement : MonoBehaviour
         animator.SetBool("isJumping", !isGrounded);
 
 
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            animator.SetTrigger("Attack");
+            
+        }
+
+       
+
+
+
+
     }
 
     void FixedUpdate()
@@ -63,4 +81,9 @@ public class Player2Movement : MonoBehaviour
         if (groundCheck != null)
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
+
+
+
+   
+
 }
