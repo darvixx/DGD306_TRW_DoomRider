@@ -3,28 +3,31 @@ using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    public Image[] hearts; // Kalplerin Image dizisi
-    public Sprite fullHeart; // Sadece dolu kalp kullanýlýyor
+    public Image[] hearts; 
+    public Sprite fullHeart; 
 
-    private PlayerHealth playerHealth;
+    public PlayerHealth playerHealth;
 
     void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
+         if (playerHealth == null)
+            Debug.LogError("UI PlayerHealth referansý atanmadý!");
     }
 
     void Update()
     {
+        if (playerHealth == null) return;
+
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < playerHealth.currentHealth)
             {
                 hearts[i].sprite = fullHeart;
-                hearts[i].enabled = true; // Görünür yap
+                hearts[i].enabled = true;
             }
             else
             {
-                hearts[i].enabled = false; // Kalbi gizle
+                hearts[i].enabled = false;
             }
         }
     }
