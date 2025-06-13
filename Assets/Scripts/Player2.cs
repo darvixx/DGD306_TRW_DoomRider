@@ -16,15 +16,27 @@ public class Player2Movement : MonoBehaviour
     private float moveInput;
     private Animator animator;
 
-    
+    public Transform attackPoint; 
+    public float attackRange = 1f;
+    public LayerMask enemyLayers;
+    public int attackDamage = 1;
 
+    public AudioClip footstepClip;
+    public AudioClip shootClip;
 
+    private AudioSource audioSource;
+
+    private float footstepTimer = 0f;
+    public float footstepInterval = 0.4f; 
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -57,12 +69,25 @@ public class Player2Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             animator.SetTrigger("Attack");
-            
+            if (shootClip != null)
+                audioSource.PlayOneShot(shootClip);
         }
 
-       
+        if (isGrounded && Mathf.Abs(moveInput) > 0.1f)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                if (footstepClip != null)
+                    audioSource.PlayOneShot(footstepClip);
 
-
+                footstepTimer = footstepInterval;
+            }
+        }
+        else
+        {
+            footstepTimer = 0f; // durunca timer sýfýrlansýn
+        }
 
 
     }
@@ -76,14 +101,31 @@ public class Player2Movement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
+    public void DealDamage()
+    {
+
+        
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyHealth>()?.TakeDamage(attackDamage);
+        }
+    }
+    
     void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+
+        if (attackPoint == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+
     }
 
+    
 
-
-   
 
 }
