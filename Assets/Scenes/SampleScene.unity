@@ -3201,6 +3201,7 @@ GameObject:
   - component: {fileID: 1085971236}
   - component: {fileID: 1085971237}
   - component: {fileID: 1085971239}
+  - component: {fileID: 1085971240}
   m_Layer: 7
   m_Name: Player2
   m_TagString: Player2
@@ -3373,7 +3374,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackPoint: {fileID: 460378477}
-  attackRange: 2
+  attackRange: 1
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -3416,7 +3417,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.196
+  m_Volume: 0.115
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3514,6 +3515,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 0
+--- !u!114 &1085971240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085971230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a4278fa57b0b4d641933b4b6f8367273, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: GamepadScheme
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1090925567
 GameObject:
   m_ObjectHideFlags: 0
@@ -6185,6 +6216,7 @@ GameObject:
   - component: {fileID: 1731546695}
   - component: {fileID: 1731546696}
   - component: {fileID: 1731546697}
+  - component: {fileID: 1731546698}
   m_Layer: 7
   m_Name: karakter_0
   m_TagString: Player
@@ -6394,6 +6426,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 0
+--- !u!114 &1731546698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731546688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a4278fa57b0b4d641933b4b6f8367273, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e5a5687e-eee2-448f-909f-3040ff35d392
+    m_ActionName: 'Player/Move[/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b41fc42b-f5ee-41ad-8422-e2d84db59c18
+    m_ActionName: 'Player/Jump[/XInputControllerWindows/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 556cc141-b9b0-4887-af63-471166592f15
+    m_ActionName: 'Player/Attack[/XInputControllerWindows/buttonWest]'
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: GamepadScheme
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1734570286
 GameObject:
   m_ObjectHideFlags: 0
