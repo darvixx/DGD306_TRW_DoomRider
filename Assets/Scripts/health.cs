@@ -13,12 +13,14 @@ public class PlayerHealth : MonoBehaviour
 
     private Animator animator;
     private bool isDead = false;
-
+    MonoBehaviour movementScript;
     void Start()
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        
     }
 
     public void TakeDamage(int amount)
@@ -58,25 +60,30 @@ public class PlayerHealth : MonoBehaviour
 
 
         animator.SetTrigger("Die");
+        animator.SetTrigger("Die1");
+
 
         StartCoroutine(DeathSequence());
     }
 
     IEnumerator DeathSequence()
     {
-        // Animasyon s�resine g�re bekleme s�resi ayarla (�rne�in 1.5 saniye)
+        
         yield return new WaitForSeconds(1.5f);
 
-        // Hareket, sald�r� gibi scriptleri devre d��� b�rak
+        
         if (GetComponent<Deneme>() != null)
             GetComponent<Deneme>().enabled = false;
 
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
 
-        
+        if (GetComponent<Player2Movement>() != null)
+            GetComponent<Player2Movement>().enabled = false;
+
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
 
 
-        // Karakteri yok et
+
         Destroy(gameObject);
     }
     void Update()

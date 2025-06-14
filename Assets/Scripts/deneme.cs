@@ -52,11 +52,7 @@ public class Deneme : MonoBehaviour
 
         anim.SetBool("isJumping", !isGrounded);
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            anim.SetTrigger("attack");
-            
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.G))
         {
