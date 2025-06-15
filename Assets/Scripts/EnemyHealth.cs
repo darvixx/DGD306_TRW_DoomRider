@@ -1,4 +1,8 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+
+
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -28,6 +32,13 @@ public class EnemyHealth : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger("Die");
+        animator.SetTrigger("boss_death");
         Destroy(gameObject, 1f);
+    }
+
+    IEnumerator LoadFinishScene()
+    {
+        yield return new WaitForSeconds(1.5f); // Ölüm animasyonu süresi kadar bekle
+        SceneManager.LoadScene("FinishScene");
     }
 }
