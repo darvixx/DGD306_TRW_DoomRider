@@ -64,6 +64,8 @@ public class PlayerHealth : MonoBehaviour
 
 
         StartCoroutine(DeathSequence());
+
+        SceneManager.LoadScene("GameOver");
     }
 
     IEnumerator DeathSequence()
